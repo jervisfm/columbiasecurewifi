@@ -1,0 +1,5 @@
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Debug\ColumbiaSecureWifi.Properties.Resources.resources
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Debug\ResGen.read.1.tlog
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Debug\ResGen.write.1.tlog
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Debug\ColumbiaSecureWifi.pdb
