@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ColumbiaSecureWifi")]
+[assembly: AssemblyTitle("ColumbiaSecureProxy")]
 [assembly: AssemblyDescription("Tunnels network traffic through Columbia servers")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Muindi INc")]
-[assembly: AssemblyProduct("ColumbiaSecureWifi")]
+[assembly: AssemblyCompany("Muindi Inc")]
+[assembly: AssemblyProduct("ColumbiaSecureProxy")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

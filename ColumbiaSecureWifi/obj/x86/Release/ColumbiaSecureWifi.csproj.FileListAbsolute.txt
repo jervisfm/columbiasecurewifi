@@ -1,0 +1,9 @@
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\bin\Release\ColumbiaSecureProxy.exe
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\bin\Release\ColumbiaSecureProxy.pdb
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ResolveAssemblyReference.cache
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ColumbiaSecureProxy.Form1.resources
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ColumbiaSecureProxy.Properties.Resources.resources
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ResGen.read.1.tlog
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ResGen.write.1.tlog
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ColumbiaSecureProxy.exe
+d:\jervis\documents\visual studio 2010\Projects\ColumbiaSecureWifi\ColumbiaSecureWifi\obj\x86\Release\ColumbiaSecureProxy.pdb
