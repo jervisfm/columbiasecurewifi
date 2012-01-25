@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Net;
 using System.Net.NetworkInformation;
+using Microsoft.Win32;
 
 
 namespace ColumbiaSecureProxy
@@ -20,6 +21,7 @@ namespace ColumbiaSecureProxy
         private String user;
         private String pass;
         private Boolean connected = false;
+        private String CUNIX_SSH_KEY = "0x94791195523cb216639e398f61506def718141bb5328caa0d521ffdaf366cf043a18100b84e5a83e6c6c694ccd1ecb87f3528b1e7420506fa02fc3f3c4c9f3f0634d02e38b9484b03990bb056989fb04078a962726521101323af701b523c629b4a3afedac9f5967040ea29df69d9765659ba27fc61125743907f6011e91e3ab,0xd2cd4853d928008c3b5fd2caf0c943356c87fc6d,0x285f4f9821fb823153a928e56c1c21dfe5a4074c3d8ab4c93916683936208841e463d4da7155091388b164270019e56c8292716fec637e35754daf09079b2e40358a65a21dd376c0f4d202a05ef85976255dce523d15f60822d51353c1ba773c3d1ca1f8c024a803aa03aac99ecb1e92d65bc72a98350bda751184010bcca3c0,0x4b94da010531be3ebc560873a731290e388d74c2f514260135aac08b7c2788ed27d48a68468528c82db1e57741725e9684a8efbc7c6283f610a968a6f20747461fc515f2c7d394cd4bfc1d7cf62385a2c5316f483474f125b71a2613d76e9cb0f0d0d78148a3e2d765377935016bebf34ad9cac305c03819659a8aaabb591f7e";
         public Object[] conn; // first element is a boolean of connection status, 2nd element has Process info for started process. 
 
         public int port; // Port Number that the server will listen on. 
@@ -34,6 +36,8 @@ namespace ColumbiaSecureProxy
                 
                 this.putty = null;
             }
+
+            loadSSHKeys(); // this loads the CUNIX SSH key if necessary (i.e. if one was not found in windows registry).
         }
 
         public bool IsConnected()
@@ -90,7 +94,7 @@ namespace ColumbiaSecureProxy
             // http://social.msdn.microsoft.com/Forums/en/netfxbcl/thread/4ce40b19-c442-4412-94b2-1ed24bdb9386
             proc.StartInfo.RedirectStandardInput = true;
             proc.StartInfo.RedirectStandardOutput = true; // redirect console output
-            string s;
+            
             
             
             Console.WriteLine("About to start putty");
@@ -266,6 +270,28 @@ namespace ColumbiaSecureProxy
 
         }
 
+        /// <summary>
+        /// This loads the Public Key for Cunix.Columbia.edu into the registry
+        /// </summary>
+        public void loadSSHKeys()
+        {
+            String reg_key = "dss@22:cunix.columbia.edu"; // key name
+            String SSH_REG_PATH = @"Software\SimonTatham\PuTTY\SshHostKeys"; // path of where putty stores ssh keys
+
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey(SSH_REG_PATH, true); // This return NULL when the key does not exist. 
+
+            if (reg == null) //  Key path where putty stores SSH keys needs to be created
+            {
+                reg = Registry.CurrentUser.CreateSubKey(SSH_REG_PATH);
+            }
+            
+            Object val = reg.GetValue(reg_key);
+            if (val == null) // No cached SSH key found, so need to insert it to be able to automate connections. 
+            {
+                reg.SetValue(reg_key, CUNIX_SSH_KEY);
+            }   
+        }
+
         public static void threadtest()
         {
             Process p = new Process();
@@ -285,21 +311,11 @@ namespace ColumbiaSecureProxy
 
         }
 
-        
 
         public static void p_Exited(object sender, EventArgs e)
         {
             Console.WriteLine("The command has been FINISHED running and exited");
         }
-
-        public  void run()
-        {
-
-            
-        }
-        
-
-
 
 
     }

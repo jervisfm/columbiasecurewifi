@@ -54,7 +54,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credentials";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // panel1
             // 
@@ -90,7 +90,7 @@
             this.textBox_status.ReadOnly = true;
             this.textBox_status.Size = new System.Drawing.Size(148, 55);
             this.textBox_status.TabIndex = 4;
-            this.textBox_status.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            
             // 
             // textBox_Server
             // 
@@ -99,7 +99,7 @@
             this.textBox_Server.ReadOnly = true;
             this.textBox_Server.Size = new System.Drawing.Size(148, 23);
             this.textBox_Server.TabIndex = 5;
-            this.textBox_Server.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            
             // 
             // label_status
             // 
@@ -109,7 +109,6 @@
             this.label_status.Size = new System.Drawing.Size(39, 15);
             this.label_status.TabIndex = 0;
             this.label_status.Text = "Status";
-            this.label_status.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 
@@ -119,7 +118,6 @@
             this.label1.Size = new System.Drawing.Size(78, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "SOCKS Server";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox_Password
             // 
@@ -129,7 +127,7 @@
             this.textBox_Password.TabIndex = 2;
             this.textBox_Password.UseSystemPasswordChar = true;
             this.textBox_Password.WordWrap = false;
-            this.textBox_Password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            
             // 
             // label_Password
             // 
@@ -139,7 +137,6 @@
             this.label_Password.Size = new System.Drawing.Size(57, 15);
             this.label_Password.TabIndex = 0;
             this.label_Password.Text = "Password";
-            this.label_Password.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox_Username
             // 
@@ -156,7 +153,6 @@
             this.label_Username.Size = new System.Drawing.Size(82, 15);
             this.label_Username.TabIndex = 0;
             this.label_Username.Text = "Columbia UNI";
-            this.label_Username.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 

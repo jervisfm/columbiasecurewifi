@@ -14,7 +14,8 @@ namespace ColumbiaSecureProxy
     class ConnectionChecker 
     {
         private SecureProxy sw; 
-        private Form1 form1; 
+        private Form1 form1;
+        private bool notdone = true;
         
         public ConnectionChecker(Form1 form1)
         {
@@ -38,8 +39,8 @@ namespace ColumbiaSecureProxy
         /// </summary>
         private void doWork()
         {
-            Boolean notdone = true;
-            const int SLEEP_TIME = 15* 1000; // 15 seconds sleep. 
+            notdone = true;
+            const int SLEEP_TIME = 10 * 1000; // 10 seconds sleep. 
             int c = 0; 
             while (notdone)
             {
@@ -48,7 +49,8 @@ namespace ColumbiaSecureProxy
                 notdone = isAlive(); 
             }
 
-            
+            //Unload Proxy and restore original proxy settings.
+            form1.getProxySetting().restore();
 
             if (notdone == false && !form1.IsDisposed)
             {
@@ -57,6 +59,11 @@ namespace ColumbiaSecureProxy
             }
         }
 
+
+        public void stop()
+        {
+            notdone = false; 
+        }
 
         /// <summary>
         /// Checks if the CUNIX connection is still up and running

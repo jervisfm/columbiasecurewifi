@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,24 +16,38 @@ namespace ColumbiaSecureProxy
     {
         private Process proc;
         private String putty;
-        private SecureProxy sw; 
+        private SecureProxy sw;
+        private ProxySetting ps;
+
         public Form1()
         {
             InitializeComponent();
             this.putty = loadPutty();
-            sw = new SecureProxy(putty); 
-            Console.Out.WriteLine("Hello");
+            sw = new SecureProxy(putty);
+            ps = new ProxySetting();
+            
             this.Disposed += new EventHandler(Form1_Disposed);
             
             //test();
             
         }
 
+        public ProxySetting getProxySetting()
+        {
+            return ps; 
+        }
+
+
         public SecureProxy getSecureWifi()
         {
             return sw;
         }
 
+        /// <summary>
+        /// Cleans up the resources on exit. Specifically, kills the child process and restores proxy settings.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Form1_Disposed(object sender, EventArgs e)
         {
             Console.WriteLine("Dispose method called...");
@@ -43,6 +58,8 @@ namespace ColumbiaSecureProxy
                     proc.Kill();
                 }
             }
+
+            ps.restore(); // restore original proxy settings. 
             
         }
 
@@ -57,7 +74,7 @@ namespace ColumbiaSecureProxy
             string port = Convert.ToString(8080);
             sw.connect("","",port);
 
-            return;
+            
             if (sw.portOpen(446))
             {
 
@@ -69,20 +86,9 @@ namespace ColumbiaSecureProxy
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
+        
 
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         /// <summary>
         /// Extracts putty froom exe image and saves it into a temporary file
         /// </summary>
@@ -245,6 +251,8 @@ namespace ColumbiaSecureProxy
             textBox_status.Text = s; 
         }
 
+        
+
         private void connectCallback(IAsyncResult result)
         {
             
@@ -257,6 +265,9 @@ namespace ColumbiaSecureProxy
                 updateStatus(msg);
                 updateServer(msg2); 
                 hideConnectBtn(true);
+                
+                //Change IE Proxy Settings. 
+                ps.SetSOCKSProxy("127.0.0.1", sw.port);
 
                 //Set Credentials to readonly
                 setCredsReadOnly(true);
